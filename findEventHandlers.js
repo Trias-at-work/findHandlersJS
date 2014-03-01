@@ -50,7 +50,7 @@
         if (allElementEvents !== void 0) {
             $.each(allElementEvents, function(i, eventContainer) {
                 $.each(eventContainer, function(eventIndex, event) {
-                    if($.inArray(eventTypes, eventIndex !== -1 || anyEvent) {
+                    if($.inArray(eventTypes, eventIndex) !== -1 || anyEvent) {
                         var isDelegateEvent = event.selector !== void 0 && event.selector !== null;
                         var $elementsCovered;
                         if (isDelegateEvent) {
