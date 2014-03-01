@@ -30,9 +30,7 @@
         eventInfo[event.type] = eventInfo[event.type] || {};
         var selector = element.localName || '#document';
         var events = eventInfo[event.type][selector] = eventInfo[event.type][selector] || [];
-        var extendedEvent = event;
-        
-        $.merge(extendedEvent, {targets: $elementsCovered.toArray() });
+        var extendedEvent = $.extend({}, event, {targets: $elementsCovered.toArray() });
         
         if($.inArray(extendedEvent, events) === -1){
             events.push(extendedEvent);
