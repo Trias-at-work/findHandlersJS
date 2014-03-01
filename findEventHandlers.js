@@ -34,7 +34,7 @@
         
         $.merge(extendedEvent, {targets: $elementsCovered.toArray() });
         
-        if($.inArray(events, extendedEvent) === -1){
+        if($.inArray(extendedEvent, events) === -1){
             events.push(extendedEvent);
         }
     };
@@ -50,7 +50,7 @@
         if (allElementEvents !== void 0) {
             $.each(allElementEvents, function(i, eventContainer) {
                 $.each(eventContainer, function(eventIndex, event) {
-                    if($.inArray(eventTypes, eventIndex) !== -1 || anyEvent) {
+                    if($.inArray(event.type, eventTypes) !== -1 || anyEvent) {
                         var isDelegateEvent = event.selector !== void 0 && event.selector !== null;
                         var $elementsCovered;
                         if (isDelegateEvent) {
