@@ -48,17 +48,19 @@
     $.each($allElements, function (elementIndex, element) {
         var allElementEvents = $._data(element, "events");
         if (allElementEvents !== void 0) {
-            $.each(allElementEvents, function(i, eventContainer){
-                $.each(eventContainer, function(eventIndex, event){
-                    var isDelegateEvent = event.selector !== void 0 && event.selector !== null;
-                    var $elementsCovered;
-                    if (isDelegateEvent) {
-                        $elementsCovered = $(event.selector, element); //only look at children of the element, since those are the only ones the handler covers
-                    } else {
-                        $elementsCovered = $(element); //just itself
-                    }
-                    if (haveCommonElements($elementsCovered, $elementsToWatch)) {
-                        addEventHandlerInfo(element, event, $elementsCovered);
+            $.each(allElementEvents, function(i, eventContainer) {
+                $.each(eventContainer, function(eventIndex, event) {
+                    if($.inArray(eventTypes, eventIndex !== -1 || anyEvent) {
+                        var isDelegateEvent = event.selector !== void 0 && event.selector !== null;
+                        var $elementsCovered;
+                        if (isDelegateEvent) {
+                            $elementsCovered = $(event.selector, element); //only look at children of the element, since those are the only ones the handler covers
+                        } else {
+                            $elementsCovered = $(element); //just itself
+                        }
+                        if (haveCommonElements($elementsCovered, $elementsToWatch)) {
+                            addEventHandlerInfo(element, event, $elementsCovered);
+                        }
                     }
                 });
             });
