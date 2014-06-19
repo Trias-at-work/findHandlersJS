@@ -1,12 +1,15 @@
-﻿var findEventHandlers = function (eventType, jqSelector) {
+﻿var findEventHandlers = jQuery.eventHandlers = jQuery.prototype.eventHandlers = function (eventType, jqSelector) {
     var $ = jQuery;// to avoid conflict between others frameworks like Mootools
     var anyEvent = false;
     var eventTypes = [];
+    var isStaticallyCalled = this == window || !this;
     
-    if(!jqSelector){
-        jqSelector = '*';
+    if(isStaticallyCalled){
+        jqSelector = jqSelector || '*';
+    }else {
+        jqSelector = this.selector || '*';
     }
-    
+
     if(!eventType){
         anyEvent = true;
     }else{
@@ -24,7 +27,6 @@
     };
     
     var eventInfo = {};
-
 
     var addEventHandlerInfo = function (element, event, $elementsCovered) {
         eventInfo[event.type] = eventInfo[event.type] || {};
